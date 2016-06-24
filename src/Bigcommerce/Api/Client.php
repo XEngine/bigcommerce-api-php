@@ -257,7 +257,19 @@ class Client
 
         return self::mapCollection($resource, $response);
     }
-
+    
+    /**
+     * Get a collection result from the specified endpoint.
+     *
+     * @param string $path api endpoint
+     * @param string $resource resource class to map individual items
+     * @return mixed array|string mapped collection or XML string if useXml is true
+     */
+    public static function getRaw($path)
+    {
+        $response = self::connection()->get(self::$api_path . $path);
+        return $response;
+    }
     /**
      * Get a resource entity from the specified endpoint.
      *
